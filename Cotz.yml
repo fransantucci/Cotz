@@ -1,0 +1,28 @@
+name: Cotizaciones Bot
+
+on:
+  schedule:
+    # Ejecuta cada 20 minutos entre las 13:00 y 21:00 UTC (10:00 a 18:00 Argentina)
+    - cron: '0,20,40 13-21 * * *'
+  #workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Instalar dependencias
+      run: |
+        pip install -r requirements.txt
+
+    - name: Ejecutar bot
+      run: |
+        python CotzBot.py
