@@ -11,13 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Verificar secrets
+    - name: Verificar secreto TELEGRAM_TOKEN
       run: |
-        if [ -z "${{ secrets.TELEGRAM_TOKEN }}" ]; then
-          echo "❌ TELEGRAM_TOKEN está vacío"
-        else
-          echo "✅ TELEGRAM_TOKEN está presente"
-        fi
+        echo "Longitud del token: ${#TELEGRAM_TOKEN}"
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
       
     - name: Clonar repositorio
       uses: actions/checkout@v3
@@ -34,6 +32,10 @@ jobs:
     - name: Ejecutar bot
       run: |
         python CotzBot.py
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
 
 
 
