@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Verificar secrets
+      run: |
+        if [ -z "${{ secrets.TELEGRAM_TOKEN }}" ]; then
+          echo "❌ TELEGRAM_TOKEN está vacío"
+        else
+          echo "✅ TELEGRAM_TOKEN está presente"
+        fi
+      
     - name: Clonar repositorio
       uses: actions/checkout@v3
 
@@ -26,6 +34,7 @@ jobs:
     - name: Ejecutar bot
       run: |
         python CotzBot.py
+
 
 
 
