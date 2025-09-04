@@ -1,7 +1,8 @@
 import asyncio
 import os
 import requests
-from telegram import Bot
+# from telegram import Bot
+from telegram.ext import ApplicationBuilder
 from datetime import datetime
 from lxml import html
 
@@ -10,7 +11,7 @@ TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
 TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 
 # Inicializar bots
-telegram_bot = Bot(token=TELEGRAM_TOKEN)
+# telegram_bot = Bot(token=TELEGRAM_TOKEN)
 
 
 # buscar datos dolares
@@ -53,10 +54,14 @@ text = (
     f"\n🔗 Fuente: IOL"
 )
 
+app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 async def enviar_mensaje():
-    bot = Bot(token=TELEGRAM_TOKEN)
-    mensaje = await bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=text)
-    # print(f"✅ Mensaje enviado. ID: {mensaje.message_id}")
+    await app.bot.send_message(chat_id=TELEGRAM_CHAT_ID, text="Hola desde GitHub Actions")
+
+# async def enviar_mensaje():
+#     bot = Bot(token=TELEGRAM_TOKEN)
+#     mensaje = await bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=text)
+#     # print(f"✅ Mensaje enviado. ID: {mensaje.message_id}")
 
 # Ejecutar la función asíncrona
 asyncio.run(enviar_mensaje())
