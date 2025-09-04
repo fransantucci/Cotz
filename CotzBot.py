@@ -3,7 +3,7 @@ import os
 import requests
 # from telegram import Bot
 from telegram.ext import ApplicationBuilder
-from datetime import datetime
+# from datetime import datetime
 from lxml import html
 
 # Configuración
@@ -34,8 +34,8 @@ response = requests.get(urlindexes)
 tree = html.fromstring(response.content)
 merv = tree.xpath('//span[@class="tar ml5"]/text()')
 
-timestamp = datetime.now()
-timestamp = timestamp.strftime("%H:%M:%S")
+# timestamp = datetime.now()
+# timestamp = timestamp.strftime("%H:%M:%S")
 
 usdoficial = usd[1].split(',')[0]
 usdmep = usd[5].split(',')[0]
@@ -50,7 +50,7 @@ text = (
     # f"📈 Venta: ${usd[5]}\n\n"
     f"📊 Caucion: {cauc[0]}%\n\n"
     f"📈 Merval: {merv[0]}%\n\n"
-    f"🕒 Actualizado: {timestamp} hs\n"
+    # f"🕒 Actualizado: {timestamp} hs\n"
     f"\n🔗 Fuente: IOL"
 )
 
