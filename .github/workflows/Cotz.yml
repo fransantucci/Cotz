@@ -27,3 +27,4 @@ jobs:
       run: |
 
         python CotzBot.py
+
