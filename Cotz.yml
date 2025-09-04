@@ -1,4 +1,4 @@
-name: Cotizaciones Bot
+name: .github/workflows/cotizaciones.yml
 
 on:
   schedule:
@@ -25,4 +25,5 @@ jobs:
 
     - name: Ejecutar bot
       run: |
+
         python CotzBot.py
