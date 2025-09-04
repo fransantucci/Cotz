@@ -56,7 +56,7 @@ text = (
 
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 async def enviar_mensaje():
-    await app.bot.send_message(chat_id=TELEGRAM_CHAT_ID, text="Hola desde GitHub Actions")
+    await app.bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=text)
 
 # async def enviar_mensaje():
 #     bot = Bot(token=TELEGRAM_TOKEN)
