@@ -1,4 +1,4 @@
 asyncio
 requests
-telegram
+python-telegram-bot
 lxml
