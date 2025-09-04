@@ -4,7 +4,7 @@ on:
   schedule:
     # Ejecuta cada 20 minutos entre las 13:00 y 21:00 UTC (10:00 a 18:00 Argentina)
     - cron: '*/20 13-21 * * 1-5'
-  #workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
+  workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
 
 jobs:
   run-bot:
@@ -27,4 +27,5 @@ jobs:
       run: |
 
         python CotzBot.py
+
 
