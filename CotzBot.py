@@ -3,7 +3,7 @@ import os
 import requests
 # from telegram import Bot # para versiones viejas de telegram
 from telegram.ext import ApplicationBuilder
-# from datetime import datetime
+from datetime import datetime
 from lxml import html
 
 # Configuración
@@ -52,28 +52,37 @@ tree = html.fromstring(response.content)
 spy = tree.xpath('//*[@id="variacionUltimoPrecio"]/span/span[3]/span/text()')
 
 
-# timestamp = datetime.now()
-# timestamp = timestamp.strftime("%H:%M:%S")
+timestamp = datetime.now()
+timestamp = timestamp.strftime("%H:%M:%S")
 
 usdoficial = usd[1].split(',')[0]
 usdmep = usd[5].split(',')[0]
 
-text = (
-    f"Message Test V2.0\n\n"
-    f"💵 Dolar Oficial: ${usdoficial}\n"
-    # f"📈 Compra: ${usd[0]}\n"
-    # f"📈 Venta: ${usd[1]}\n\n"
-    f"💵 Dolar MEP: ${usdmep}\n\n"
-    # f"📈 Compra: ${usd[4]}\n"
-    # f"📈 Venta: ${usd[5]}\n\n"
-    f"📊 Caucion: {cauc[0]}%\n\n"
-    f"🇦🇷 Merval: {merv[0]}%\n"
-    f"🇧🇷 EWZ: {ewz[0]}%\n"
-    f"🇺🇸 QQQ: {qqq[0]}%\n"
-    f"🇺🇸 SPY: {spy[0]}%\n"
-    # f"🕒 Actualizado: {timestamp} hs\n"
-    # f"\n🔗 Fuente: IOL"
-)
+if (usdmep * 1.2) > usd:
+    text = (
+        f"Cotz V2.1\n\n"
+        f"💵 Dolar Oficial: ${usdoficial}\n"
+        f"📊 Caucion: {cauc[0]}%\n\n"
+        f"🇦🇷 Merval: {merv[0]}%\n"
+        f"🇧🇷 EWZ: {ewz[0]}%\n"
+        f"🇺🇸 QQQ: {qqq[0]}%\n"
+        f"🇺🇸 SPY: {spy[0]}%\n"
+        f"🕒 Actualizado: {timestamp} hs\n"
+        f"\n🔗 Fuente: IOL"
+    )
+else:
+    text = (
+        f"Cotz V2.1\n\n"
+        f"💵 Dolar Oficial: ${usdoficial}\n"
+        f"💵 Dolar MEP: ${usdmep}\n\n"
+        f"📊 Caucion: {cauc[0]}%\n\n"
+        f"🇦🇷 Merval: {merv[0]}%\n"
+        f"🇧🇷 EWZ: {ewz[0]}%\n"
+        f"🇺🇸 QQQ: {qqq[0]}%\n"
+        f"🇺🇸 SPY: {spy[0]}%\n"
+        f"🕒 Actualizado: {timestamp} hs\n"
+        f"\n🔗 Fuente: IOL"
+    )
 
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 async def enviar_mensaje():
