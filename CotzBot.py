@@ -67,7 +67,7 @@ if (usdmep * 1.2) > usd:
         f"🇧🇷 EWZ: {ewz[0]}%\n"
         f"🇺🇸 QQQ: {qqq[0]}%\n"
         f"🇺🇸 SPY: {spy[0]}%\n"
-        f"🕒 Actualizado: {timestamp} hs\n"
+        f"\n🕒 Actualizado: {timestamp} hs\n"
         f"\n🔗 Fuente: IOL"
     )
 else:
@@ -80,7 +80,7 @@ else:
         f"🇧🇷 EWZ: {ewz[0]}%\n"
         f"🇺🇸 QQQ: {qqq[0]}%\n"
         f"🇺🇸 SPY: {spy[0]}%\n"
-        f"🕒 Actualizado: {timestamp} hs\n"
+        f"\n🕒 Actualizado: {timestamp} hs\n"
         f"\n🔗 Fuente: IOL"
     )
 
@@ -96,4 +96,5 @@ async def enviar_mensaje():
 # print(f"✅ Mensaje enviado. ID: {indexes[0]}")
 
 # Ejecutar la función asíncrona
+
 asyncio.run(enviar_mensaje())
