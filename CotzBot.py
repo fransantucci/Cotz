@@ -58,7 +58,10 @@ timestamp = timestamp.strftime("%H:%M:%S")
 usdoficial = usd[1].split(',')[0]
 usdmep = usd[5].split(',')[0]
 
-if (float(usdmep.strip()) * 1.2) > float(usd.strip()):
+usdmep_val = float(str(usdmep).strip())
+usd_val = float(str(usd).strip())
+
+if usdmep_val * 1.2 > usd_val:
     text = (
         f"Cotz V2.1\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
@@ -98,5 +101,6 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
