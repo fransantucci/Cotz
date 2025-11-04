@@ -58,7 +58,7 @@ timestamp = timestamp.strftime("%H:%M:%S")
 usdoficial = usd[1].split(',')[0]
 usdmep = usd[5].split(',')[0]
 
-if (int(usdmep) * 1.2) > int(usd):
+if (float(usdmep) * 1.2) > float(usd):
     text = (
         f"Cotz V2.1\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
