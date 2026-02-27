@@ -25,6 +25,12 @@ jobs:
       with:
         python-version: '3.11'
 
+#    - name: Restaurar cache del JSON
+#      uses: actions/cache@v4
+#      with:
+#        path: ultimo_valor.json
+#        key: ultimo_valor-cache
+
     - name: Instalar dependencias
       run: |
         pip install -r requirements.txt
@@ -35,6 +41,13 @@ jobs:
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+#    - name: Guardar cache actualizado
+#      uses: actions/cache@v4
+#      with:
+#        path: ultimo_valor.json
+#        key: ultimo_valor-cache
+
 
 
 
