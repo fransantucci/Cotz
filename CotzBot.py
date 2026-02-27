@@ -56,7 +56,7 @@ spy = tree.xpath('//*[@id="variacionUltimoPrecio"]/span/span[3]/span/text()')
 argentina = ZoneInfo("America/Argentina/Buenos_Aires")
 
 timestamp = datetime.now(argentina)
-timestamp = timestamp.strftime("%H:%M:%S")
+timestamp = timestamp.strftime("%H:%M")
 
 usdoficial = usd[1].split(',')[0]
 usdmep = usd[3].split(',')[0]
@@ -105,6 +105,7 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
 
