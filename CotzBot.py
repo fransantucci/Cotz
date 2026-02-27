@@ -4,6 +4,7 @@ import requests
 # from telegram import Bot # para versiones viejas de telegram
 from telegram.ext import ApplicationBuilder
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from lxml import html
 
 # Configuración
@@ -51,8 +52,10 @@ response = requests.get(urlindexes)
 tree = html.fromstring(response.content)
 spy = tree.xpath('//*[@id="variacionUltimoPrecio"]/span/span[3]/span/text()')
 
+# Argentina Standard Time (UTC-3)
+argentina = ZoneInfo("America/Argentina/Buenos_Aires")
 
-timestamp = datetime.now()
+timestamp = datetime.now(argentina)
 timestamp = timestamp.strftime("%H:%M:%S")
 
 usdoficial = usd[1].split(',')[0]
@@ -62,7 +65,7 @@ usdmep_val = float(str(usdmep).strip())
 usd_val = str(usd[1]).strip().replace('.', '').replace(',', '.')
 usd_val = float(usd_val)
 
-if usdmep_val * 1.2 > usd_val:
+if usdmep_val * 1.2 < usd_val:
     text = (
         f"Cotz V2.2\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
@@ -102,6 +105,7 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
 
