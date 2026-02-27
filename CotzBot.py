@@ -67,28 +67,28 @@ usd_val = float(usd_val)
 
 if usdmep_val * 1.2 < usd_val:
     text = (
-        f"Cotz V2.2\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
         f"📊 Caucion: {cauc[0]}%\n\n"
         f"🇦🇷 Merval: {merv[0]}%\n"
+        f"🇺🇸 SPY: {spy[0]}%\n"
         f"🇧🇷 EWZ: {ewz[0]}%\n"
         f"🇺🇸 QQQ: {qqq[0]}%\n"
-        f"🇺🇸 SPY: {spy[0]}%\n"
         f"\n🕒 Actualizado: {timestamp} hs\n"
         f"\n🔗 Fuente: IOL"
+        f"\n\nV4.0"
     )
 else:
     text = (
-        f"Cotz V2.2\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
         f"💵 Dolar MEP: ${usdmep}\n\n"
         f"📊 Caucion: {cauc[0]}%\n\n"
         f"🇦🇷 Merval: {merv[0]}%\n"
+        f"🇺🇸 SPY: {spy[0]}%\n"
         f"🇧🇷 EWZ: {ewz[0]}%\n"
         f"🇺🇸 QQQ: {qqq[0]}%\n"
-        f"🇺🇸 SPY: {spy[0]}%\n"
         f"\n🕒 Actualizado: {timestamp} hs\n"
         f"\n🔗 Fuente: IOL"
+        f"\n\nV4.0"
     )
 
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
@@ -105,6 +105,7 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
 
