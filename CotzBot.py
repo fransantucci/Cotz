@@ -56,7 +56,7 @@ timestamp = datetime.now()
 timestamp = timestamp.strftime("%H:%M:%S")
 
 usdoficial = usd[1].split(',')[0]
-usdmep = usd[5].split(',')[0]
+usdmep = usd[3].split(',')[0]
 
 usdmep_val = float(str(usdmep).strip())
 usd_val = str(usd[1]).strip().replace('.', '').replace(',', '.')
@@ -64,7 +64,7 @@ usd_val = float(usd_val)
 
 if usdmep_val * 1.2 > usd_val:
     text = (
-        f"Cotz V2.1\n\n"
+        f"Cotz V2.2\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
         f"📊 Caucion: {cauc[0]}%\n\n"
         f"🇦🇷 Merval: {merv[0]}%\n"
@@ -76,7 +76,7 @@ if usdmep_val * 1.2 > usd_val:
     )
 else:
     text = (
-        f"Cotz V2.1\n\n"
+        f"Cotz V2.2\n\n"
         f"💵 Dolar Oficial: ${usdoficial}\n"
         f"💵 Dolar MEP: ${usdmep}\n\n"
         f"📊 Caucion: {cauc[0]}%\n\n"
@@ -102,6 +102,7 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
 
