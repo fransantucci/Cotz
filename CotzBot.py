@@ -59,7 +59,7 @@ usdoficial = usd[1].split(',')[0]
 usdmep = usd[5].split(',')[0]
 
 usdmep_val = float(str(usdmep).strip())
-usd_val = float(str(usd[1]).strip())
+usd_val = float(str(usd[1]).strip().replace(',','.'))
 
 if usdmep_val * 1.2 > usd_val:
     text = (
@@ -101,6 +101,7 @@ async def enviar_mensaje():
 # Ejecutar la función asíncrona
 
 asyncio.run(enviar_mensaje())
+
 
 
 
